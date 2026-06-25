@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alexandra Chsherbinina — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0e0e0e;
+    --white: #ffffff;
+    --cream: #f7f4ef;
+    --beige: #ede8e1;
+    --mid: #a89f96;
+    --subtle: #6e6660;
+    --text: #1c1a18;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--beige);
+    height: 56px; display: flex; align-items: center;
+    justify-content: space-between; padding: 0 3rem;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; font-size: 1.15rem; letter-spacing: 0.04em;
+    color: var(--black); font-style: italic;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.72rem; font-weight: 400; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--mid); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 56px;
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .hero-left {
+    background: var(--black); display: flex;
+    flex-direction: column; justify-content: flex-end; padding: 5rem 4rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mid); margin-bottom: 2.5rem;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-size: clamp(52px, 6vw, 88px);
+    line-height: 1.0; color: var(--white); margin-bottom: 2.5rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-name em { display: block; font-style: italic; color: rgba(255,255,255,0.5); }
+  .hero-desc {
+    font-size: 0.95rem; color: rgba(255,255,255,0.45);
+    line-height: 1.8; max-width: 360px; font-weight: 300;
+  }
+  .hero-right {
+    background: var(--cream); display: flex;
+    flex-direction: column; justify-content: center; padding: 5rem 4rem; gap: 0;
+  }
+  .hero-stat { padding: 1.75rem 0; border-bottom: 1px solid var(--beige); }
+  .hero-stat:first-child { padding-top: 0; }
+  .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .hero-stat-label {
+    font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--mid); margin-bottom: 0.5rem;
+  }
+  .hero-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500; font-size: 1.35rem; color: var(--black); line-height: 1.2;
+  }
+  .hero-stat-sub { font-size: 0.82rem; color: var(--subtle); margin-top: 0.2rem; font-weight: 300; }
+
+  /* SECTIONS */
+  section { border-bottom: 1px solid var(--beige); }
+  .section-inner { max-width: 1160px; margin: 0 auto; padding: 6rem 3rem; }
+  .section-header { margin-bottom: 4rem; display: flex; align-items: baseline; gap: 1.5rem; }
+  .section-num { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; font-size: clamp(32px, 4vw, 54px);
+    color: var(--black); line-height: 1; letter-spacing: -0.01em;
+  }
+
+  /* BIO */
+  .bio-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 5rem; align-items: start; }
+  .bio-text p { font-size: 1rem; color: var(--subtle); margin-bottom: 1.3rem; line-height: 1.85; font-weight: 300; }
+  .bio-cards { display: flex; flex-direction: column; gap: 1px; background: var(--beige); }
+  .bio-card { background: var(--white); padding: 1.5rem 1.75rem; }
+  .bio-card-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.5rem; }
+  .bio-card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 500; color: var(--black); line-height: 1.4;
+  }
+
+  /* STATEMENT */
+  .statement-bg { background: var(--cream); }
+  .statement-body { max-width: 760px; }
+  .statement-body p { font-size: 1rem; color: var(--subtle); line-height: 1.9; margin-bottom: 1.5rem; font-weight: 300; }
+  .pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-weight: 300;
+    font-size: clamp(22px, 2.8vw, 34px);
+    color: var(--black); line-height: 1.4;
+    border-left: 1px solid var(--black);
+    padding-left: 2rem; margin: 3rem 0;
+  }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--beige); }
+  .skill-col { background: var(--white); padding: 2.5rem; }
+  .skill-col-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 500; color: var(--black);
+    margin-bottom: 1.75rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--beige);
+    letter-spacing: 0.01em;
+  }
+  .skill-col ul { list-style: none; }
+  .skill-col li {
+    font-size: 0.88rem; color: var(--subtle); padding: 0.5rem 0;
+    border-bottom: 1px solid var(--beige);
+    display: flex; align-items: center; gap: 0.75rem; font-weight: 300;
+  }
+  .skill-col li:last-child { border-bottom: none; }
+  .skill-col li::before { content: '—'; color: var(--mid); font-size: 0.75rem; flex-shrink: 0; }
+
+  /* INTERNSHIP */
+  .internship-bg { background: var(--black); }
+  .internship-bg .section-num { color: rgba(255,255,255,0.2); }
+  .internship-bg .section-title { color: var(--white); }
+  .internship-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; }
+  .int-meta { display: flex; flex-direction: column; gap: 2rem; }
+  .int-meta-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.35rem; }
+  .int-meta-value { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--white); }
+  .int-content p { font-size: 0.97rem; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 1.2rem; font-weight: 300; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .tag {
+    font-size: 0.72rem; letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.15);
+    padding: 0.35rem 1rem; border-radius: 100px; font-weight: 300;
+  }
+
+  /* PORTFOLIO */
+  .portfolio-bg { background: var(--cream); }
+  .portfolio-list { display: flex; flex-direction: column; }
+  .p-item {
+    display: grid; grid-template-columns: 60px 1fr auto;
+    align-items: center; gap: 2.5rem; padding: 1.75rem 0;
+    border-bottom: 1px solid var(--beige);
+    transition: padding-left 0.25s;
+    cursor: default;
+  }
+  .p-item:hover { padding-left: 1rem; }
+  .p-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 300; color: var(--beige); line-height: 1;
+  }
+  .p-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--black); margin-bottom: 0.2rem; }
+  .p-desc { font-size: 0.83rem; color: var(--subtle); font-weight: 300; line-height: 1.5; }
+  .p-badge {
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mid); border: 1px solid var(--beige);
+    padding: 0.3rem 0.85rem; border-radius: 100px; white-space: nowrap;
+  }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--beige); }
+  .contact-left { background: var(--white); padding: 4rem; }
+  .contact-left p { font-size: 0.97rem; color: var(--subtle); line-height: 1.85; margin-bottom: 3rem; font-weight: 300; }
+  .c-links { display: flex; flex-direction: column; gap: 1.25rem; }
+  .c-link {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none; color: var(--black);
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500;
+    transition: gap 0.2s;
+  }
+  .c-link:hover { gap: 1.5rem; }
+  .c-icon { width: 38px; height: 38px; background: var(--black); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .c-icon svg { fill: white; width: 15px; height: 15px; }
+
+  .contact-right { background: var(--black); padding: 4rem; }
+  .contact-right h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-style: italic;
+    font-size: 2.4rem; color: var(--white); line-height: 1.1; margin-bottom: 0.5rem;
+  }
+  .contact-right .role { font-size: 0.78rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3rem; }
+  .c-detail { padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .c-detail:first-of-type { border-top: 1px solid rgba(255,255,255,0.07); }
+  .c-detail-label { font-size: 0.63rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.25rem; }
+  .c-detail-value { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; color: rgba(255,255,255,0.8); }
+
+  footer { background: var(--black); padding: 1.5rem 3rem; display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); }
+  footer p { font-size: 0.7rem; color: rgba(255,255,255,0.2); letter-spacing: 0.06em; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    .hero, .bio-grid, .skills-grid, .internship-layout, .contact-grid { grid-template-columns: 1fr; }
+    .hero-left { min-height: 55vh; }
+    .section-inner { padding: 4rem 1.5rem; }
+    nav { padding: 0 1.5rem; }
+    .p-item { grid-template-columns: 40px 1fr; }
+    .p-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Alexandra Chsherbinina</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#statement">Statement</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#internship">Internship</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">MS Management & Analytics · NYU · 2025</div>
+    <h1 class="hero-name">Alexandra<em>Chsherbinina</em></h1>
+    <p class="hero-desc">Bridging data, strategy, and financial technology. Analytics professional with a focus on fintech, institutional brokerage, and business operations.</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hero-stat-label">Currently</div>
+      <div class="hero-stat-value">Intern at Webull</div>
+      <div class="hero-stat-sub">Institutional Development & Fintech Research</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-label">Education</div>
+      <div class="hero-stat-value">M.S. Management & Analytics</div>
+      <div class="hero-stat-sub">New York University</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-label">Focus</div>
+      <div class="hero-stat-value">Fintech · Analytics · Strategy</div>
+      <div class="hero-stat-sub">Business Operations · Product Research</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-label">Location</div>
+      <div class="hero-stat-value">New York, NY</div>
+      <div class="hero-stat-sub">Open to opportunities</div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Short Bio</h2>
+    </div>
+    <div class="bio-grid reveal">
+      <div class="bio-text">
+        <p>My name is Alexandra Chsherbinina, and I am currently pursuing a Master of Science in Management and Analytics at New York University. My academic background combines business analytics, project management, technology, risk management, and data-driven decision-making. Before starting my graduate studies, I earned a degree in Translation Studies with minors in Business Journalism and Public Relations, which helped me develop strong communication, research, and cross-cultural skills.</p>
+        <p>I am currently completing a summer internship at Webull, where I am exploring institutional development, fintech platforms, competitive analysis, onboarding workflows, and brokerage services. Through this internship, I am gaining hands-on exposure to how financial technology companies support different user segments, including active traders, investment advisors, operations teams, and institutional clients.</p>
+        <p>My professional interests include fintech, product strategy, business analytics, institutional brokerage, and operational improvement. I enjoy working on projects that require both structured analysis and creative problem-solving. My goal is to continue growing as a business and analytics professional who can connect data, technology, and strategy to support better decision-making.</p>
+      </div>
+      <div class="bio-cards">
+        <div class="bio-card"><div class="bio-card-label">Degree</div><div class="bio-card-value">M.S. Management & Analytics, NYU</div></div>
+        <div class="bio-card"><div class="bio-card-label">Background</div><div class="bio-card-value">B.A. Translation Studies — Business Journalism & PR</div></div>
+        <div class="bio-card"><div class="bio-card-label">Languages</div><div class="bio-card-value">English · Russian</div></div>
+        <div class="bio-card"><div class="bio-card-label">Interests</div><div class="bio-card-value">Fintech · Analytics · Product Strategy · Brokerage</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="statement" class="statement-bg">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Personal Statement</h2>
+    </div>
+    <div class="statement-body reveal">
+      <p>I am a graduate student in the M.S. in Management and Analytics program at New York University, with a strong interest in business analytics, fintech, institutional brokerage, and product strategy. My academic and professional path has helped me develop a multidisciplinary perspective that combines analytical thinking, project management, communication, and business research.</p>
+      <div class="pull-quote">"My goal is to keep building technical, strategic, and communication skills while learning how technology can improve financial services and create better experiences for institutional and individual users."</div>
+      <p>During my internship at Webull, I have been expanding my understanding of institutional financial services — including brokerage platforms, onboarding workflows, asset classes, trading tools, user experience, and competitive positioning. This experience has allowed me to connect classroom learning with real business challenges in the fintech industry.</p>
+      <p>My career goal is to continue developing as a professional who can analyze complex business problems, support strategic decision-making, and contribute to technology-driven financial products. I am especially interested in roles that combine analytics, product research, operations, and client-focused solutions.</p>
+      <p>I believe that strong business professionals should be both analytical and adaptable.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Skills & Abilities</h2>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-col">
+        <div class="skill-col-title">Analytical & Business</div>
+        <ul>
+          <li>Business research & competitive analysis</li>
+          <li>Market & product benchmarking</li>
+          <li>Data-driven decision-making</li>
+          <li>Risk management & operational analysis</li>
+          <li>Financial technology research</li>
+          <li>Institutional brokerage research</li>
+          <li>Workflow & process evaluation</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <div class="skill-col-title">Technical</div>
+        <ul>
+          <li>Microsoft Excel</li>
+          <li>Tableau</li>
+          <li>SQL (basics)</li>
+          <li>Google Sheets</li>
+          <li>PowerPoint & Presentation Design</li>
+          <li>Database & ERD concepts</li>
+          <li>UAT platform exploration</li>
+          <li>Research documentation</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <div class="skill-col-title">Professional</div>
+        <ul>
+          <li>Project management</li>
+          <li>Cross-functional communication</li>
+          <li>Problem-solving</li>
+          <li>Attention to detail</li>
+          <li>Written communication</li>
+          <li>Presentation skills</li>
+          <li>Adaptability in new industries</li>
+          <li>Team collaboration</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="internship" class="internship-bg">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Internship</h2>
+    </div>
+    <div class="internship-layout reveal">
+      <div class="int-meta">
+        <div><div class="int-meta-label">Company</div><div class="int-meta-value">Webull</div></div>
+        <div><div class="int-meta-label">Role</div><div class="int-meta-value">Intern — Finance & Operations</div></div>
+        <div><div class="int-meta-label">Period</div><div class="int-meta-value">Summer 2025</div></div>
+        <div><div class="int-meta-label">Location</div><div class="int-meta-value">New York, NY</div></div>
+      </div>
+      <div class="int-content">
+        <p>At Webull, I am deepening my understanding of institutional financial services and fintech operations. Working across research, competitive analysis, and operational workflows, I connect analytical work with real business challenges in the brokerage industry.</p>
+        <p>This experience has allowed me to link my NYU coursework in analytics and management directly with how technology-driven financial companies serve institutional clients — from onboarding workflows to platform benchmarking and product positioning.</p>
+        <div class="tags">
+          <span class="tag">Institutional Development</span>
+          <span class="tag">Competitive Analysis</span>
+          <span class="tag">Onboarding Workflows</span>
+          <span class="tag">Brokerage Platforms</span>
+          <span class="tag">Fintech Research</span>
+          <span class="tag">Product Benchmarking</span>
+          <span class="tag">Trading Tools</span>
+          <span class="tag">User Experience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="portfolio-bg">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Portfolio Materials</h2>
+    </div>
+    <div class="portfolio-list reveal">
+      <div class="p-item">
+        <span class="p-num">01</span>
+        <div><div class="p-title">Competitive Analysis — Webull Institutional</div><div class="p-desc">Benchmarking matrix comparing institutional brokerage platforms, features, onboarding flows, and user segments.</div></div>
+        <span class="p-badge">Work Sample</span>
+      </div>
+      <div class="p-item">
+        <span class="p-num">02</span>
+        <div><div class="p-title">24/7 Trading Expansion — Visual Presentation</div><div class="p-desc">Strategic analysis and presentation on Webull's 24/7 trading capabilities and market positioning.</div></div>
+        <span class="p-badge">Presentation</span>
+      </div>
+      <div class="p-item">
+        <span class="p-num">03</span>
+        <div><div class="p-title">Research Report — Institutional Brokerage</div><div class="p-desc">In-depth comparison of institutional brokerage services, asset classes, and client onboarding practices.</div></div>
+        <span class="p-badge">Research Report</span>
+      </div>
+      <div class="p-item">
+        <span class="p-num">04</span>
+        <div><div class="p-title">NYU Course Project Work</div><div class="p-desc">Analytics, project management, risk management, and database projects from the MS Management & Analytics program.</div></div>
+        <span class="p-badge">Course Project</span>
+      </div>
+      <div class="p-item">
+        <span class="p-num">05</span>
+        <div><div class="p-title">Executive Summary — Webull Internship Memo</div><div class="p-desc">Summary of internship learning objectives, key findings, and business recommendations.</div></div>
+        <span class="p-badge">Executive Memo</span>
+      </div>
+      <div class="p-item">
+        <span class="p-num">06</span>
+        <div><div class="p-title">Writing Samples from NYU Courses</div><div class="p-desc">Academic memos, research papers, and reflection assignments demonstrating analytical and professional writing.</div></div>
+        <span class="p-badge">Writing Sample</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-left">
+        <p>I am open to opportunities in fintech, business analytics, product strategy, and operations. Feel free to reach out to connect or learn more about my work.</p>
+        <div class="c-links">
+          <a class="c-link" href="mailto:ac12879@nyu.edu">
+            <span class="c-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+            ac12879@nyu.edu
+          </a>
+          <a class="c-link" href="https://www.linkedin.com/in/alexandra-chsherbinina-a4b6a63b2/" target="_blank">
+            <span class="c-icon"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></span>
+            LinkedIn Profile
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <h3>Alexandra<br>Chsherbinina</h3>
+        <p class="role">Graduate Student & Webull Intern</p>
+        <div class="c-detail"><div class="c-detail-label">Program</div><div class="c-detail-value">M.S. Management & Analytics</div></div>
+        <div class="c-detail"><div class="c-detail-label">University</div><div class="c-detail-value">New York University</div></div>
+        <div class="c-detail"><div class="c-detail-label">Current Role</div><div class="c-detail-value">Intern at Webull</div></div>
+        <div class="c-detail"><div class="c-detail-label">Location</div><div class="c-detail-value">New York, NY</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Alexandra Chsherbinina</p>
+  <p>M.S. Management & Analytics · NYU</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
